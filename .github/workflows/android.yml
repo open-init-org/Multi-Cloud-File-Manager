@@ -9,6 +9,8 @@ on:
 jobs:
   createArtifacts:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
     - uses: actions/checkout@v4
     - name: Read Go version from project
@@ -32,6 +34,77 @@ jobs:
         sdkmanager "ndk;${NDK_VERSION}"
     - name: Build app
       run: ./gradlew assembleOssDebug
+
+    - name: Create GitHub release for tagged push
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: actions/create-release@v1
+      with:
+        tag_name: ${{ github.ref_name }}
+        release_name: ${{ github.ref_name }}
+        draft: false
+        prerelease: false
+      id: create_release
+
+    - name: Resolve APK paths for release upload
+      if: startsWith(github.ref, 'refs/tags/')
+      run: |
+        APK_ARM=$(ls app/build/outputs/apk/oss/debug/*-oss-armeabi-v7a-debug.apk)
+        APK_ARM64=$(ls app/build/outputs/apk/oss/debug/*-oss-arm64-v8a-debug.apk)
+        APK_X86=$(ls app/build/outputs/apk/oss/debug/*-oss-x86-debug.apk)
+        APK_X64=$(ls app/build/outputs/apk/oss/debug/*-oss-x86_64-debug.apk)
+        APK_UNIVERSAL=$(ls app/build/outputs/apk/oss/debug/*-oss-universal-debug.apk)
+        echo "APK_ARM=$APK_ARM" >> $GITHUB_ENV
+        echo "APK_ARM64=$APK_ARM64" >> $GITHUB_ENV
+        echo "APK_X86=$APK_X86" >> $GITHUB_ENV
+        echo "APK_X64=$APK_X64" >> $GITHUB_ENV
+        echo "APK_UNIVERSAL=$APK_UNIVERSAL" >> $GITHUB_ENV
+      shell: bash
+
+    - name: Upload Release APK (arm)
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ env.APK_ARM }}
+        asset_name: multicloudfilemanager-${{ github.ref_name }}-oss-armeabi-v7a-debug.apk
+        asset_content_type: application/vnd.android.package-archive
+
+    - name: Upload Release APK (arm64)
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ env.APK_ARM64 }}
+        asset_name: multicloudfilemanager-${{ github.ref_name }}-oss-arm64-v8a-debug.apk
+        asset_content_type: application/vnd.android.package-archive
+
+    - name: Upload Release APK (x86)
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ env.APK_X86 }}
+        asset_name: multicloudfilemanager-${{ github.ref_name }}-oss-x86-debug.apk
+        asset_content_type: application/vnd.android.package-archive
+
+    - name: Upload Release APK (x64)
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ env.APK_X64 }}
+        asset_name: multicloudfilemanager-${{ github.ref_name }}-oss-x86_64-debug.apk
+        asset_content_type: application/vnd.android.package-archive
+
+    - name: Upload Release APK (universal)
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ env.APK_UNIVERSAL }}
+        asset_name: multicloudfilemanager-${{ github.ref_name }}-oss-universal-debug.apk
+        asset_content_type: application/vnd.android.package-archive
+
     - name: Upload APK (arm)
       uses: actions/upload-artifact@v4
       with:
@@ -47,7 +120,7 @@ jobs:
       with:
         name: nightly-x86.apk
         path: ${{ github.workspace }}/app/build/outputs/apk/oss/debug/*-oss-x86-debug.apk
-    - name: Upload APK (arm)
+    - name: Upload APK (x64)
       uses: actions/upload-artifact@v4
       with:
         name: nightly-x64.apk
