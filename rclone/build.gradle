@@ -23,10 +23,10 @@ import groovy.json.JsonSlurper
 import java.nio.file.Paths
 
 ext {
-    NDK_VERSION = project.properties['de.felixnuesse.extract.ndkVersion']
-    NDK_TOOLCHAIN_VERSION = project.properties['de.felixnuesse.extract.ndkToolchainVersion']
-    RCLONE_VERSION = project.properties['de.felixnuesse.extract.rCloneVersion']
-    GO_REQ_VERSION = project.properties['de.felixnuesse.extract.goVersion']
+    NDK_VERSION = project.properties['org.openinit.multicloudfilemanager.ndkVersion']
+    NDK_TOOLCHAIN_VERSION = project.properties['org.openinit.multicloudfilemanager.ndkToolchainVersion']
+    RCLONE_VERSION = project.properties['org.openinit.multicloudfilemanager.rCloneVersion']
+    GO_REQ_VERSION = project.properties['org.openinit.multicloudfilemanager.goVersion']
     RCLONE_MODULE = 'github.com/rclone/rclone'
     RCLONE_CUSTOM_VERSION_SUFFIX = '-extract'
 

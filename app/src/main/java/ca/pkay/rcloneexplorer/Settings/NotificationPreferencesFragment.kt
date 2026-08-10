@@ -9,8 +9,8 @@ import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import ca.pkay.rcloneexplorer.R
-import de.felixnuesse.extract.settings.preferences.ButtonPreference
-import de.felixnuesse.extract.updates.UpdateChecker
+import org.openinit.multicloudfilemanager.extract.settings.preferences.ButtonPreference
+import org.openinit.multicloudfilemanager.extract.updates.UpdateChecker
 import es.dmoral.toasty.Toasty
 
 

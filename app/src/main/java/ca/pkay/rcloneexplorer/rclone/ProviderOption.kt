@@ -1,7 +1,7 @@
 package ca.pkay.rcloneexplorer.rclone
 
 import android.util.Log
-import de.felixnuesse.extract.extensions.tag
+import org.openinit.multicloudfilemanager.extract.extensions.tag
 import org.json.JSONObject
 import java.util.Objects
 

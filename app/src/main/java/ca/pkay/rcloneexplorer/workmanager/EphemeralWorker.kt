@@ -25,8 +25,8 @@ import ca.pkay.rcloneexplorer.notifications.support.StatusObject
 import ca.pkay.rcloneexplorer.util.FLog
 import ca.pkay.rcloneexplorer.util.SyncLog
 import ca.pkay.rcloneexplorer.util.WifiConnectivitiyUtil
-import de.felixnuesse.extract.extensions.tag
-import de.felixnuesse.extract.notifications.implementations.DownloadWorkerNotification
+import org.openinit.multicloudfilemanager.extract.extensions.tag
+import org.openinit.multicloudfilemanager.extract.notifications.implementations.DownloadWorkerNotification
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.BufferedReader
@@ -35,9 +35,9 @@ import java.io.InputStreamReader
 import java.io.InterruptedIOException
 import kotlin.random.Random
 import android.util.Log
-import de.felixnuesse.extract.notifications.implementations.DeleteWorkerNotification
-import de.felixnuesse.extract.notifications.implementations.MoveWorkerNotification
-import de.felixnuesse.extract.notifications.implementations.UploadWorkerNotification
+import org.openinit.multicloudfilemanager.extract.notifications.implementations.DeleteWorkerNotification
+import org.openinit.multicloudfilemanager.extract.notifications.implementations.MoveWorkerNotification
+import org.openinit.multicloudfilemanager.extract.notifications.implementations.UploadWorkerNotification
 
 
 class EphemeralWorker (private var mContext: Context, workerParams: WorkerParameters): Worker(mContext, workerParams) {

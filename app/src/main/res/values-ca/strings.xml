@@ -133,7 +133,7 @@
     <string name="pref_locale_dlg_title">Tria l\'idioma</string>
     <string name="pref_locale_restart_notice">El canvi d\'idioma es farà efectiu en reiniciar l\'aplicació</string>
     <string name="use_logs">Registre d\'errors d\'rclone</string>
-    <string name="use_logs_summary">Els registres d\'errors es desaran en un fitxer local a (Android/data/de.felixnuesse.extract/files/logs)</string>
+    <string name="use_logs_summary">Els registres d\'errors es desaran en un fitxer local a (Android/data/org.openinit.multicloudfilemanager/files/logs)</string>
     <string name="notifications_pref_title">Notificacions</string>
     <string name="open_notification_settings_title">Més paràmetres de notificació</string>
     <string name="open_notification_settings_summary">Obre els paràmetres per configurar com et notiquem!</string>

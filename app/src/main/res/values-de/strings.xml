@@ -120,7 +120,7 @@
     <string name="pref_locale_dlg_title">Sprache auswählen</string>
     <string name="pref_locale_restart_notice">Sprache wird beim nächsten neustart der App geändert.</string>
     <string name="use_logs">Rclone-Fehler protokollieren</string>
-    <string name="use_logs_summary">Fehler werden in einer lokalen Datei protokolliert (Android/data/de.felixnuesse.extract/files/logs)</string>
+    <string name="use_logs_summary">Fehler werden in einer lokalen Datei protokolliert (Android/data/org.openinit.multicloudfilemanager/files/logs)</string>
     <string name="notifications_pref_title">Benachrichtigungen</string>
     <string name="content_description_circle">Kreis</string>
     <string name="loading">Lade</string>

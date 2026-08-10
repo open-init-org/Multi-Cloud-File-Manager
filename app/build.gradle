@@ -9,11 +9,11 @@ android {
             storeFile file('.config/android/roundsync.keystore')
         }
     }
-    ndkVersion project.properties['de.felixnuesse.extract.ndkVersion']
+    ndkVersion project.properties['org.openinit.multicloudfilemanager.ndkVersion']
     defaultConfig {
         generatedDensities = []
         vectorDrawables.generatedDensities = []
-        applicationId 'de.felixnuesse.extract'
+        applicationId 'org.openinit.multicloudfilemanager'
         minSdkVersion 23
         compileSdk 34
         targetSdkVersion 34
@@ -22,7 +22,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "java.lang.String", "CLI", System.getenv('RCX_BUILD_CLI') ? System.getenv('RCX_BUILD_CLI') : "\"c03129b6-b09f-9cb4-8fcd-7f143b8f94ef\""
         buildConfigField "java.lang.String", "VCP_AUTHORITY", "\"" + applicationId + ".vcp\"";
-        setProperty("archivesBaseName",  "roundsync_v"+versionName)
+        setProperty("archivesBaseName",  "multicloudfilemanager_v"+versionName)
 
         externalNativeBuild {
             ndkBuild {

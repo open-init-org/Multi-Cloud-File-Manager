@@ -25,7 +25,7 @@ When filing a new bug report, answer all the questions in the template. This inc
  - Exact Android version (e.g. `8.1.0`)
  - Your device model and manufacturer
  - An exact list of steps that leads to your issue. Please also enable local logging in Settings > Logging > Log rclone errors.
- - Paste or attach your rclone log located in `Android/data/de.felixnuesse.extract/files/logs/log.txt`. Make sure to remove any confidential information such as passwords, tokens or authorization info.
+ - Paste or attach your rclone log located in `Android/data/org.openinit.multicloudfilemanager/files/logs/log.txt`. Make sure to remove any confidential information such as passwords, tokens or authorization info.
  - If your issue happens when using a remote, please also add a redacted version of your configuration file (passwords and tokens removed).
  - We may also ask you to test your config file on a PC or in Termux.
 

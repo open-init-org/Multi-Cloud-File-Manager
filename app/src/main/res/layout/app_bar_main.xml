@@ -95,7 +95,7 @@
             </com.google.android.material.card.MaterialCardView>
         </FrameLayout>
 
-        <de.felixnuesse.ui.BreadcrumbView
+        <org.openinit.multicloudfilemanager.ui.BreadcrumbView
             android:id="@+id/breadcrumb_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

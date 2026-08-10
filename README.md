@@ -51,10 +51,10 @@ If you don't know which version to pick use ```roundsync-<version>-universal-rel
 
 [<img src="https://f-droid.org/badge/get-it-on.png"
     alt="Get it on F-Droid"
-    height="80">](https://f-droid.org/packages/de.felixnuesse.extract)
+    height="80">](https://f-droid.org/packages/org.openinit.multicloudfilemanager)
 [<img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png"
     alt="Get it on IzzyOnDroid"
-    height="80">](https://apt.izzysoft.de/packages/de.felixnuesse.extract)
+    height="80">](https://apt.izzysoft.de/packages/org.openinit.multicloudfilemanager)
 
 ## Usage
 See documentation and historical notes in [ROUND_SYNC.md](./ROUND_SYNC.md).
@@ -66,7 +66,7 @@ The intent needs the following:
 
 | Intent          |                   Content                   |                 |
 |:----------------|:-------------------------------------------:|----------------:|
-| packageName     |           de.felixnuesse.extract            |                 |
+| packageName     |           org.openinit.multicloudfilemanager            |                 |
 | className       | ca.pkay.rcloneexplorer.Services.SyncService |                 |
 | Action          |                 START_TASK                  |                 |
 | Integer Extra   |                    task                     |        idOfTask |
