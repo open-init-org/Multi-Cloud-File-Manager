@@ -1,4 +1,4 @@
-Round Sync t'ajuda a gestionar els teus fitxers allà on siguis, tant els del teu dispositiu local com els de molts proveïdors de serveis al núvol.
+Multi Cloud File Manager t'ajuda a gestionar els teus fitxers allà on siguis, tant els del teu dispositiu local com els de molts proveïdors de serveis al núvol.
  
 <b>Gestió de fitxers</b> 
 Pots llistar, veure, descarregar, pujar, moure, canviar el nom i suprimir fitxers i carpetes

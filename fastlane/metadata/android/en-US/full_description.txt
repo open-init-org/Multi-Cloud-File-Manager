@@ -1,4 +1,4 @@
-Round Sync helps you to mange your files, everywhere you go, on your local device or on most cloud providers.
+Multi Cloud File Manager helps you to mange your files, everywhere you go, on your local device or on most cloud providers.
 
 * <b>File Management:</b> You can list, view, download, upload, move, rename, delete files and folders
 * <b>Streaming:</b> Stream media files, serve files and directories over FTP, HTTP, WebDAV or DLNA
