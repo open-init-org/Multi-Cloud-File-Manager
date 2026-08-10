@@ -34,7 +34,7 @@ public class SafDAVServer extends NanoHTTPD {
      * @param port the device port to listen on
      */
     @Deprecated
-    public SafDAVServer(int port, Context context) {
+    private SafDAVServer(int port, Context context) {
         super(hostname, port);
         itemAccess = new DocumentsContractAccess(context);
         this.paths = new ProviderPaths(context);

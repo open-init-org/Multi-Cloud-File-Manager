@@ -180,7 +180,7 @@ public class RcloneRcd {
      * Warning: do not hand out to clients, this contains rc auth data!
      * @return
      */
-    public String getServeBase() {
+    String getServeBase() {
         return new StringBuilder()
                 .append("http://")
                 .append(rcUser)
