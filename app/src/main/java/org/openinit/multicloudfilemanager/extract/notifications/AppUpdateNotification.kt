@@ -10,8 +10,8 @@ import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import ca.pkay.rcloneexplorer.R
-import ca.pkay.rcloneexplorer.util.PermissionManager
+import org.openinit.multicloudfilemanager.R
+import org.openinit.multicloudfilemanager.util.PermissionManager
 import org.openinit.multicloudfilemanager.extract.extensions.tag
 import org.openinit.multicloudfilemanager.extract.updates.UpdateUserchoiceReceiver
 import org.openinit.multicloudfilemanager.extract.updates.UpdateUserchoiceReceiver.Companion.ACTION_DOWNLOAD

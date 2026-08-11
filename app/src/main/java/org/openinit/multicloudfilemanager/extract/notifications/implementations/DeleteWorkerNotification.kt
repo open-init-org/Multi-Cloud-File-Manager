@@ -2,10 +2,10 @@ package org.openinit.multicloudfilemanager.extract.notifications.implementations
 
 import android.content.Context
 import android.util.Log
-import ca.pkay.rcloneexplorer.Items.FileItem
-import ca.pkay.rcloneexplorer.R
-import ca.pkay.rcloneexplorer.notifications.prototypes.WorkerNotification
-import ca.pkay.rcloneexplorer.notifications.support.StatusObject
+import org.openinit.multicloudfilemanager.Items.FileItem
+import org.openinit.multicloudfilemanager.R
+import org.openinit.multicloudfilemanager.notifications.prototypes.WorkerNotification
+import org.openinit.multicloudfilemanager.notifications.support.StatusObject
 import org.openinit.multicloudfilemanager.extract.extensions.tag
 
 class DeleteWorkerNotification(var context: Context) : WorkerNotification(context) {

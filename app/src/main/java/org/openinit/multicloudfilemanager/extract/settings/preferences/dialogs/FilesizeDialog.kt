@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import ca.pkay.rcloneexplorer.R
+import org.openinit.multicloudfilemanager.R
 import com.google.android.material.textfield.TextInputEditText
 
 
