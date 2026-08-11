@@ -14,14 +14,6 @@ object BiometricLockManager {
     var isAppLocked: Boolean = true
 
     @JvmStatic
-    fun isAppLocked(): Boolean = isAppLocked
-
-    @JvmStatic
-    fun setAppLocked(locked: Boolean) {
-        isAppLocked = locked
-    }
-
-    @JvmStatic
     fun isBiometricUnlockEnabled(context: Context): Boolean {
         val prefs = PreferenceManager.getDefaultSharedPreferences(context)
         val key = context.getString(R.string.pref_key_biometric_lock)
