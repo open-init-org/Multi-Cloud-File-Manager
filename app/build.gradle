@@ -7,6 +7,8 @@ android {
         release {
             keyAlias 'fdroid'
             storeFile file('.config/android/org.openinit.multicloudfilemanager.keystore')
+            storePassword System.getenv("KEYSTORE_PASSWORD") ?: "android"
+            keyPassword System.getenv("KEY_PASSWORD") ?: "android"
         }
     }
     ndkVersion project.properties['org.openinit.multicloudfilemanager.ndkVersion']
@@ -52,7 +54,11 @@ android {
                     appIcon: "@mipmap/ic_launcher",
                     appIconRound: "@mipmap/ic_launcher_round"
             ]
-            signingConfig signingConfigs.release
+            if (file('.config/android/org.openinit.multicloudfilemanager.keystore').exists()) {
+                signingConfig signingConfigs.release
+            } else {
+                signingConfig signingConfigs.debug
+            }
         }
     }
 
