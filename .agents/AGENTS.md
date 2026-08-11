@@ -30,7 +30,7 @@ This repository contains **Multi Cloud File Manager** (formerly known as *Round 
 ## 3. Build Requirements & Commands
 
 ### Prerequisites
-- **JDK:** Java 17
+- **JDK:** Java 21
 - **Go:** Read dynamically from `gradle.properties` (`org.openinit.multicloudfilemanager.goVersion`)
 - **Android NDK:** Read dynamically from `gradle.properties` (`org.openinit.multicloudfilemanager.ndkVersion`)
 
@@ -78,3 +78,6 @@ External applications or task managers (e.g., Tasker, Automate) can trigger sync
   - `librclone.so` (Native Go core compilation & Android W^X execution mechanics): [`docs/rclone-core-integration.md`](../docs/rclone-core-integration.md)
 
 
+## 7. Memory & Context for AI Agents
+
+See [`MEMORY.md`](../.agents/MEMORY.md) for persistent memory, architectural context, conventions, and notes for AI coding assistants operating on this codebase. Always update this file with new context, conventions, or architectural notes to ensure AI agents have the latest information.
