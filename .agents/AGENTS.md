@@ -55,7 +55,7 @@ External applications or task managers (e.g., Tasker, Automate) can trigger sync
 | Component | Target Value |
 |---|---|
 | **Package Name** | `org.openinit.multicloudfilemanager` |
-| **Class Name** | `ca.pkay.rcloneexplorer.Services.SyncService` |
+| **Class Name** | `org.openinit.multicloudfilemanager.Services.SyncService` |
 | **Action** | `START_TASK` |
 | **Extra (Int)** | `task` (ID of the saved task) |
 | **Extra (Boolean)** | `notification` (`true` or `false`) |
@@ -66,3 +66,15 @@ External applications or task managers (e.g., Tasker, Automate) can trigger sync
 
 - Releases are triggered on pushing tags (e.g., `git push origin v3.0.2`).
 - The `android.yml` workflow reads `goVersion` and `ndkVersion` from `gradle.properties`, exports `GO_VERSION` to `$GITHUB_ENV`, builds the application, and publishes release assets using `softprops/action-gh-release@v2`.
+
+---
+
+## 6. Maintenance & Guidelines
+
+- **Relative Paths Policy**: MUST ALWAYS use relative paths (e.g., `docs/safdav-architecture.md`, `app/src/...`) in documentation, responses, and code comments. NEVER hardcode machine-specific absolute file system paths (such as `/home/username/...` or `file:///home/...`).
+- **Changelog Updates**: The in-app changelog asset [`app/src/main/assets/changelog.md`](../app/src/main/assets/changelog.md) MUST ALWAYS be updated whenever a new feature, bug fix, refactoring, or version release is made. Keep entries clean starting from version `3.0.0` onwards.
+- **Architecture Documentation**:
+  - `safdav` (Storage Access Framework WebDAV adapter): [`docs/safdav-architecture.md`](../docs/safdav-architecture.md)
+  - `librclone.so` (Native Go core compilation & Android W^X execution mechanics): [`docs/rclone-core-integration.md`](../docs/rclone-core-integration.md)
+
+
