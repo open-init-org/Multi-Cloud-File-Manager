@@ -142,7 +142,7 @@ android {
         preBuild.dependsOn(':rclone:buildAll')
     }
 
-    namespace 'ca.pkay.rcloneexplorer'
+    namespace 'org.openinit.multicloudfilemanager'
 
     // https://android.izzysoft.de/articles/named/iod-scan-apkchecks#blobs
     dependenciesInfo {
