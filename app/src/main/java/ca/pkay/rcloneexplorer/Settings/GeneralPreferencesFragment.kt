@@ -57,6 +57,35 @@ class GeneralPreferencesFragment : PreferenceFragmentCompat() {
             true
         }
 
+        val biometricLockKey = getString(R.string.pref_key_biometric_lock)
+        val biometricPreference = findPreference(biometricLockKey) as androidx.preference.SwitchPreferenceCompat?
+        biometricPreference?.setOnPreferenceChangeListener { preference, newValue ->
+            val enable = newValue as Boolean
+            if (enable) {
+                if (!ca.pkay.rcloneexplorer.util.BiometricLockManager.canAuthenticate(requireContext())) {
+                    Toast.makeText(
+                        requireContext(),
+                        R.string.biometric_not_available,
+                        Toast.LENGTH_LONG
+                    ).show()
+                    false
+                } else {
+                    ca.pkay.rcloneexplorer.util.BiometricLockManager.promptBiometric(
+                        requireActivity(),
+                        onSuccess = {
+                            (preference as androidx.preference.SwitchPreferenceCompat).isChecked = true
+                        },
+                        onError = { errorMsg ->
+                            Toast.makeText(requireContext(), errorMsg, Toast.LENGTH_SHORT).show()
+                        }
+                    )
+                    false
+                }
+            } else {
+                true
+            }
+        }
+
     }
 
     private fun showThumbnailSizeDialog(preference: Preference) {

@@ -37,6 +37,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceManager;
 
+import ca.pkay.rcloneexplorer.util.BiometricLockManager;
+
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationView;
 
@@ -222,6 +224,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
+        if (BiometricLockManager.isBiometricUnlockEnabled(this) && BiometricLockManager.isAppLocked()) {
+            BiometricLockManager.promptBiometric(this, () -> {}, error -> {});
+        }
         updatePermissionFragmentVisibility();
         if(MAIN_ACTIVITY_START_LOG.equals(getIntent().getAction())){
             startLogFragment();

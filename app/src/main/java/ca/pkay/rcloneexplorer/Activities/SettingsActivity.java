@@ -20,6 +20,7 @@ import ca.pkay.rcloneexplorer.Settings.SettingsFragment;
 import ca.pkay.rcloneexplorer.Settings.GeneralPreferencesFragment;
 import ca.pkay.rcloneexplorer.Settings.ThemingPreferencesFragment;
 import ca.pkay.rcloneexplorer.util.ActivityHelper;
+import ca.pkay.rcloneexplorer.util.BiometricLockManager;
 import ca.pkay.rcloneexplorer.R;
 import ca.pkay.rcloneexplorer.RuntimeConfiguration;
 
@@ -29,6 +30,14 @@ public class SettingsActivity extends AppCompatActivity implements SettingsFragm
     private final String SAVED_THEME_CHANGE = "ca.pkay.rcexplorer.SettingsActivity.OUTSTATE_THEME_CHANGED";
     private final String SAVED_FRAGMENT = "ca.pkay.rcexplorer.SettingsActivity.RESTORE_FRAGMENT";
     private boolean themeHasChanged;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (BiometricLockManager.isBiometricUnlockEnabled(this) && BiometricLockManager.isAppLocked()) {
+            BiometricLockManager.promptBiometric(this, () -> {}, error -> {});
+        }
+    }
 
     @Override
     protected void attachBaseContext(Context newBase) {
