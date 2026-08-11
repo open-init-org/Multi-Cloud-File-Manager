@@ -1,7 +1,13 @@
-### 3.0.6
+### 3.0.7
+* **UI:** Redesigned and updated application launcher and Play Store icons (`ic_launcher-playstore.png`) with a modern cyber cyan & electric blue glassmorphic cloud sync design.
 * **UI:** Streamlined About screen layout into a consolidated Maintainer card with an "Author & Previous Maintainers" item pointing to `contributors.md`.
 * **Build:** Upgraded project toolchain to Java 21 LTS (`sourceCompatibility`, `targetCompatibility`, `jvmTarget` and CI workflows).
 * **Build:** Updated Kotlin toolchain to version `2.0.21` and `kotlinx-serialization-json` to `1.7.3`.
+
+***
+
+### 3.0.6
+* **UI:** Modernized overall application theme with a Cyber Cyan & Electric Blue Material Design 3 palette, refined dark surfaces, and custom navigation gradients.
 * **Fix:** Fixed application crash when toggling or prompting biometric authentication in SettingsActivity.
 * **Fix:** Fixed ClassNotFoundException when inflating custom preference components in Settings XML layouts.
 * **Refactor:** Full package rename from `ca.pkay.rcloneexplorer` to `org.openinit.multicloudfilemanager`.
