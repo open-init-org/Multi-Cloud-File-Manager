@@ -48,8 +48,8 @@ class UpdateWorker (private var mContext: Context, workerParams: WorkerParameter
         }
 
         val source =  GithubTagSource(
-            ownerUsername = "newhinton",
-            repoName = "Round-Sync",
+            ownerUsername = "open-init-org",
+            repoName = "Multi-Cloud-File-Manager",
             currentVersion = BuildConfig.VERSION_NAME
         )
 

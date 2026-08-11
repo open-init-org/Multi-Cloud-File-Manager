@@ -55,7 +55,7 @@ class UpdateUserchoiceReceiver : BroadcastReceiver() {
             if(version.isNotEmpty()) {
                 if (Build.VERSION.SDK_INT >= VERSION_CODES.N) {
                     downloadAndInstall(
-                        URL("https://github.com/newhinton/Round-Sync/releases/download/$version/roundsync_$version-oss-$abi-release.apk"),
+                        URL("https://github.com/open-init-org/Multi-Cloud-File-Manager/releases/download/$version/multicloudfilemanager_v$version-oss-$abi-release.apk"),
                         context,
                         version,
                         abi
@@ -72,7 +72,7 @@ class UpdateUserchoiceReceiver : BroadcastReceiver() {
         Thread {
             val dir = context.externalCacheDir?.absolutePath ?: ""
             Log.e(tag(), "Download dir: $dir")
-            val target = File(dir, "roundsync_$version-oss-$abi-release.apk")
+            val target = File(dir, "multicloudfilemanager_v$version-oss-$abi-release.apk")
             url.openStream()
                 .use { input ->
                 FileOutputStream(target).use {

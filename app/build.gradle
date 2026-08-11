@@ -6,7 +6,7 @@ android {
     signingConfigs {
         release {
             keyAlias 'fdroid'
-            storeFile file('.config/android/roundsync.keystore')
+            storeFile file('.config/android/org.openinit.multicloudfilemanager.keystore')
         }
     }
     ndkVersion project.properties['org.openinit.multicloudfilemanager.ndkVersion']
@@ -18,7 +18,7 @@ android {
         compileSdk 34
         targetSdkVersion 34
         versionCode 410 // last digit is reserved for ABI, only ever end on 0!
-        versionName '2.5.6'
+        versionName '3.0.4'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "java.lang.String", "CLI", System.getenv('RCX_BUILD_CLI') ? System.getenv('RCX_BUILD_CLI') : "\"c03129b6-b09f-9cb4-8fcd-7f143b8f94ef\""
         buildConfigField "java.lang.String", "VCP_AUTHORITY", "\"" + applicationId + ".vcp\"";
@@ -120,8 +120,8 @@ android {
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-DEBUG"
             buildConfigField "java.lang.String", "VCP_AUTHORITY", "\"" + defaultConfig.applicationId + ".debug.vcp\"";
-            resValue("string", "app_name", "RS Debug")
-            resValue("string", "app_short_name", "RS Debug")
+            resValue("string", "app_name", "Multicloud File Manager Debug")
+            resValue("string", "app_short_name", "Multicloud File Manager Debug")
         }
     }
 

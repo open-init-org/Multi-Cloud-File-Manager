@@ -90,8 +90,6 @@ See [CONTRIBUTING](./CONTRIBUTING.md)
 
 Anyone is welcome to contribute and help out. However, hate, discrimination and racism are decidedly unwelcome here. If you feel offended by this, you might belong to the group of people who are not welcome. I will not tolerate hate in any way.
 
-If you want to add more translations, see our [weblate-project](https://hosted.weblate.org/projects/round-sync/round-sync/)!
-
 ## Developing
 
 You should first make sure you have:
