@@ -1,6 +1,8 @@
 package ca.pkay.rcloneexplorer.util
 
+import android.app.KeyguardManager
 import android.content.Context
+import android.os.Build
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
@@ -14,6 +16,10 @@ object BiometricLockManager {
     var isAppLocked: Boolean = true
 
     @JvmStatic
+    var isPromptShowing: Boolean = false
+        private set
+
+    @JvmStatic
     fun isBiometricUnlockEnabled(context: Context): Boolean {
         val prefs = PreferenceManager.getDefaultSharedPreferences(context)
         val key = context.getString(R.string.pref_key_biometric_lock)
@@ -23,10 +29,19 @@ object BiometricLockManager {
     @JvmStatic
     fun canAuthenticate(context: Context): Boolean {
         val biometricManager = BiometricManager.from(context)
-        val authenticators = BiometricManager.Authenticators.BIOMETRIC_STRONG or
-                BiometricManager.Authenticators.BIOMETRIC_WEAK or
-                BiometricManager.Authenticators.DEVICE_CREDENTIAL
-        return biometricManager.canAuthenticate(authenticators) == BiometricManager.BIOMETRIC_SUCCESS
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            val authenticators = BiometricManager.Authenticators.BIOMETRIC_STRONG or
+                    BiometricManager.Authenticators.BIOMETRIC_WEAK or
+                    BiometricManager.Authenticators.DEVICE_CREDENTIAL
+            return biometricManager.canAuthenticate(authenticators) == BiometricManager.BIOMETRIC_SUCCESS
+        } else {
+            val authenticators = BiometricManager.Authenticators.BIOMETRIC_STRONG or
+                    BiometricManager.Authenticators.BIOMETRIC_WEAK
+            val canBio = biometricManager.canAuthenticate(authenticators) == BiometricManager.BIOMETRIC_SUCCESS
+            if (canBio) return true
+            val keyguardManager = context.getSystemService(Context.KEYGUARD_SERVICE) as? KeyguardManager
+            return keyguardManager?.isDeviceSecure == true
+        }
     }
 
     @JvmStatic
@@ -36,35 +51,53 @@ object BiometricLockManager {
         onSuccess: Runnable,
         onError: Consumer<String>? = null
     ) {
+        if (isPromptShowing || activity.isFinishing || activity.isDestroyed) {
+            return
+        }
+
+        isPromptShowing = true
         val executor = ContextCompat.getMainExecutor(activity)
         val callback = object : BiometricPrompt.AuthenticationCallback() {
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                 super.onAuthenticationSucceeded(result)
+                isPromptShowing = false
                 isAppLocked = false
                 onSuccess.run()
             }
 
             override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
                 super.onAuthenticationError(errorCode, errString)
+                isPromptShowing = false
                 onError?.accept(errString.toString())
             }
         }
 
-        val biometricPrompt = BiometricPrompt(activity, executor, callback)
-        val promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle(activity.getString(R.string.biometric_prompt_title))
-            .setSubtitle(activity.getString(R.string.biometric_prompt_subtitle))
-            .setAllowedAuthenticators(
-                BiometricManager.Authenticators.BIOMETRIC_STRONG or
-                        BiometricManager.Authenticators.BIOMETRIC_WEAK or
-                        BiometricManager.Authenticators.DEVICE_CREDENTIAL
-            )
-            .build()
+        try {
+            val biometricPrompt = BiometricPrompt(activity, executor, callback)
+            val builder = BiometricPrompt.PromptInfo.Builder()
+                .setTitle(activity.getString(R.string.biometric_prompt_title))
+                .setSubtitle(activity.getString(R.string.biometric_prompt_subtitle))
 
-        biometricPrompt.authenticate(promptInfo)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                builder.setAllowedAuthenticators(
+                    BiometricManager.Authenticators.BIOMETRIC_STRONG or
+                            BiometricManager.Authenticators.BIOMETRIC_WEAK or
+                            BiometricManager.Authenticators.DEVICE_CREDENTIAL
+                )
+            } else {
+                @Suppress("DEPRECATION")
+                builder.setDeviceCredentialAllowed(true)
+            }
+
+            biometricPrompt.authenticate(builder.build())
+        } catch (e: Exception) {
+            isPromptShowing = false
+            onError?.accept(e.localizedMessage ?: "Biometric error")
+        }
     }
 
     fun interface Consumer<T> {
         fun accept(value: T)
     }
 }
+

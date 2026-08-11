@@ -20,7 +20,7 @@
             android:title="Switch preference"
             app:summary="@string/notification_reports" />
 
-        <org.openinit.multicloudfilemanager.settings.preferences.ButtonPreference
+        <org.openinit.multicloudfilemanager.extract.settings.preferences.ButtonPreference
             android:key="TempKeyNotificationSettings"
             app:title="@string/open_notification_settings_title"
             app:summary="@string/open_notification_settings_summary" />

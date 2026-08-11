@@ -62,21 +62,27 @@ class GeneralPreferencesFragment : PreferenceFragmentCompat() {
         biometricPreference?.setOnPreferenceChangeListener { preference, newValue ->
             val enable = newValue as Boolean
             if (enable) {
-                if (!ca.pkay.rcloneexplorer.util.BiometricLockManager.canAuthenticate(requireContext())) {
+                val context = context ?: return@setOnPreferenceChangeListener false
+                if (!ca.pkay.rcloneexplorer.util.BiometricLockManager.canAuthenticate(context)) {
                     Toast.makeText(
-                        requireContext(),
+                        context,
                         R.string.biometric_not_available,
                         Toast.LENGTH_LONG
                     ).show()
                     false
                 } else {
+                    val activity = activity ?: return@setOnPreferenceChangeListener false
                     ca.pkay.rcloneexplorer.util.BiometricLockManager.promptBiometric(
-                        requireActivity(),
+                        activity,
                         onSuccess = {
-                            (preference as androidx.preference.SwitchPreferenceCompat).isChecked = true
+                            if (isAdded && getContext() != null) {
+                                (preference as? androidx.preference.SwitchPreferenceCompat)?.isChecked = true
+                            }
                         },
                         onError = { errorMsg ->
-                            Toast.makeText(requireContext(), errorMsg, Toast.LENGTH_SHORT).show()
+                            if (isAdded && getContext() != null) {
+                                Toast.makeText(getContext(), errorMsg, Toast.LENGTH_SHORT).show()
+                            }
                         }
                     )
                     false

@@ -25,7 +25,7 @@
             app:key="@string/pref_key_show_thumbnails"
             app:title="@string/show_thumbnails" />
 
-        <org.openinit.multicloudfilemanager.settings.preferences.FilesizePreference
+        <org.openinit.multicloudfilemanager.extract.settings.preferences.FilesizePreference
             android:defaultValue="1048576"
             android:key="@string/pref_key_thumbnail_size_limit"
             android:title="@string/pref_thumbnails_dlg_title"
@@ -70,7 +70,7 @@
             app:useSimpleSummaryProvider="true" />
 
 
-        <org.openinit.multicloudfilemanager.settings.preferences.EditIntPreference
+        <org.openinit.multicloudfilemanager.extract.settings.preferences.EditIntPreference
             android:inputType="number"
             android:key="@string/pref_key_proxy_port"
             android:numeric="integer"

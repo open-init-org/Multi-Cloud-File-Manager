@@ -25,7 +25,7 @@ class MainApplication : Application(), Application.ActivityLifecycleCallbacks {
         startedActivityCount--
         if (startedActivityCount <= 0) {
             startedActivityCount = 0
-            if (BiometricLockManager.isBiometricUnlockEnabled(this)) {
+            if (BiometricLockManager.isBiometricUnlockEnabled(this) && !BiometricLockManager.isPromptShowing) {
                 BiometricLockManager.isAppLocked = true
             }
         }
