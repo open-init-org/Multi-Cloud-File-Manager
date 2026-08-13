@@ -3,7 +3,7 @@ package org.openinit.multicloudfilemanager.extract.updates
 import android.content.Context
 import android.os.Build
 import androidx.preference.PreferenceManager
-import ca.pkay.rcloneexplorer.R
+import org.openinit.multicloudfilemanager.R
 import org.openinit.multicloudfilemanager.extract.updates.workmanager.UpdateManager
 
 

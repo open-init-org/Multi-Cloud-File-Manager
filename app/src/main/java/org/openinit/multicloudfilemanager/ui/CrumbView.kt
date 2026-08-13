@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.widget.TooltipCompat
-import ca.pkay.rcloneexplorer.R
-import ca.pkay.rcloneexplorer.databinding.CustomuiCrumbviewBinding
+import androidx.core.content.ContextCompat
+import com.google.android.material.color.MaterialColors
+import org.openinit.multicloudfilemanager.R
+import org.openinit.multicloudfilemanager.databinding.CustomuiCrumbviewBinding
 
 
 class CrumbView : LinearLayout {
@@ -20,8 +22,6 @@ class CrumbView : LinearLayout {
     private var mShowArrow = false
     private var mIsActive = true
 
-    private var mTextDefaultColor = binding.title.currentTextColor
-
 
     constructor(context: Context?, attrs: AttributeSet?, defStyle: Int) : super(context, attrs, defStyle)  {}
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)  {}
@@ -29,8 +29,7 @@ class CrumbView : LinearLayout {
 
     init {
         binding.icon.visibility = View.GONE
-        binding.arrow.setColorFilter(mTextDefaultColor)
-        binding.icon.setColorFilter(mTextDefaultColor)
+        updateActiveState()
     }
 
     fun setTitle(title: String) {
@@ -46,7 +45,7 @@ class CrumbView : LinearLayout {
 
     fun showArrow(showArrow: Boolean) {
         mShowArrow = showArrow
-        if(mShowArrow) {
+        if (mShowArrow) {
             binding.arrow.visibility = View.VISIBLE
         } else {
             binding.arrow.visibility = View.GONE
@@ -69,36 +68,35 @@ class CrumbView : LinearLayout {
 
 
     private fun updateActiveState() {
-
         var textFieldPadding = 0
 
-        if(mIsActive) {
+        if (mIsActive) {
+            val activeColor = MaterialColors.getColor(binding.root, com.google.android.material.R.attr.colorOnPrimaryContainer, ContextCompat.getColor(context, R.color.colorAccent))
             binding.root.setBackgroundResource(R.drawable.pill)
-            binding.arrow.setColorFilter(mTextDefaultColor)
-            binding.icon.setColorFilter(mTextDefaultColor)
-            binding.title.setTextColor(mTextDefaultColor)
+            binding.arrow.setColorFilter(activeColor)
+            binding.icon.setColorFilter(activeColor)
+            binding.title.setTextColor(activeColor)
             TooltipCompat.setTooltipText(binding.root, mPath)
             binding.title.maxWidth = getPixelFromDp(99999) // allow it as big as possible
             textFieldPadding = getPixelFromDp(8)
         } else {
+            val inactiveColor = MaterialColors.getColor(binding.root, com.google.android.material.R.attr.colorOnSurfaceVariant, ContextCompat.getColor(context, android.R.color.darker_gray))
             binding.root.background = null
-            var color = resources.getColor(R.color.textColorHighlight)
-            binding.arrow.setColorFilter(color)
-            binding.icon.setColorFilter(color)
-            binding.title.setTextColor(color)
+            binding.arrow.setColorFilter(inactiveColor)
+            binding.icon.setColorFilter(inactiveColor)
+            binding.title.setTextColor(inactiveColor)
             TooltipCompat.setTooltipText(binding.root, null)
             binding.title.maxWidth = getPixelFromDp(90)
         }
 
-        if(binding.icon.visibility == View.VISIBLE) {
+        if (binding.icon.visibility == View.VISIBLE) {
             binding.title.setPadding(0, 0, textFieldPadding, 0)
         } else {
             binding.title.setPadding(textFieldPadding, 0, textFieldPadding, 0)
         }
-
     }
 
-    private fun getPixelFromDp(dp: Int ): Int {
+    private fun getPixelFromDp(dp: Int): Int {
         return (dp * resources.displayMetrics.density).toInt()
     }
 }

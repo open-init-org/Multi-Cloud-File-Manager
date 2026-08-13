@@ -5,7 +5,7 @@ import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.util.Log
 import androidx.preference.DialogPreference
-import ca.pkay.rcloneexplorer.R
+import org.openinit.multicloudfilemanager.R
 import org.openinit.multicloudfilemanager.extract.extensions.tag
 import org.openinit.multicloudfilemanager.extract.settings.preferences.dialogs.FilesizeDialog
 import java.lang.NumberFormatException

@@ -10,8 +10,8 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
 import androidx.preference.PreferenceManager
-import ca.pkay.rcloneexplorer.BuildConfig
-import ca.pkay.rcloneexplorer.R
+import org.openinit.multicloudfilemanager.BuildConfig
+import org.openinit.multicloudfilemanager.R
 import org.openinit.multicloudfilemanager.extract.extensions.tag
 import org.openinit.multicloudfilemanager.extract.notifications.AppUpdateNotification
 import java.io.File

@@ -1,10 +1,10 @@
 package org.openinit.multicloudfilemanager.extract.notifications.implementations
 
 import android.content.Context
-import ca.pkay.rcloneexplorer.Items.FileItem
-import ca.pkay.rcloneexplorer.R
-import ca.pkay.rcloneexplorer.notifications.prototypes.WorkerNotification
-import ca.pkay.rcloneexplorer.notifications.support.StatusObject
+import org.openinit.multicloudfilemanager.Items.FileItem
+import org.openinit.multicloudfilemanager.R
+import org.openinit.multicloudfilemanager.notifications.prototypes.WorkerNotification
+import org.openinit.multicloudfilemanager.notifications.support.StatusObject
 
 class DownloadWorkerNotification(var context: Context) : WorkerNotification(context) {
 

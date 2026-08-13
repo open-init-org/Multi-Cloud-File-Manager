@@ -5,8 +5,8 @@ import android.util.Log
 import androidx.preference.PreferenceManager
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import ca.pkay.rcloneexplorer.BuildConfig
-import ca.pkay.rcloneexplorer.R
+import org.openinit.multicloudfilemanager.BuildConfig
+import org.openinit.multicloudfilemanager.R
 import com.sharkaboi.appupdatechecker.AppUpdateChecker
 import com.sharkaboi.appupdatechecker.models.AppUpdateCheckerException
 import com.sharkaboi.appupdatechecker.models.UpdateResult
