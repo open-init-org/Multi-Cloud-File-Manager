@@ -1,5 +1,10 @@
-### 3.0.9
+### 3.0.10
+* **Security:** Added native `rclone.conf` configuration file encryption backed by strong 256-bit keys managed by Android Keystore and EncryptedSharedPreferences (`ConfigPasswordManager`).
+* **UI & Architecture:** Completely reorganized and modernized the Settings menu into 4 thematic sections (Appearance & Network, Security & Integration, Notifications & Diagnostics, Data Management) with improved taxonomy, clear descriptions, and vibrant icons.
 * **Security & UI:** Added a opaque privacy overlay layer (`overlay_biometric_lock.xml`) that obscures sensitive application content while the biometric authentication prompt is visible.
+***
+
+### 3.0.9
 * **UI:** Moved the three-dot options menu on Gallery View thumbnails from the top-right corner to the bottom info bar, alongside the filename and file details — improving visibility and usability.
 * **Feature:** Added "Folder Size" section to the folder properties dialog — tap Calculate to recursively count files and compute total occupied space via `rclone size`.
 * **UI:** Moved "About" from General Settings to the Navigation Drawer (hamburger menu) for faster access.
