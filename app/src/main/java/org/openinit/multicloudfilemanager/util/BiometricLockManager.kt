@@ -3,7 +3,10 @@ package org.openinit.multicloudfilemanager.util
 import android.app.KeyguardManager
 import android.content.Context
 import android.os.Build
+import android.view.View
+import android.view.ViewGroup
 import androidx.biometric.BiometricManager
+
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
@@ -66,6 +69,21 @@ object BiometricLockManager {
         )
     }
 
+    private fun showOverlay(activity: FragmentActivity) {
+        val rootLayout = activity.findViewById<ViewGroup>(android.R.id.content) ?: return
+        if (rootLayout.findViewById<View>(R.id.biometric_overlay_root) != null) {
+            return
+        }
+        val overlayView = activity.layoutInflater.inflate(R.layout.overlay_biometric_lock, rootLayout, false)
+        rootLayout.addView(overlayView)
+    }
+
+    private fun hideOverlay(activity: FragmentActivity) {
+        val rootLayout = activity.findViewById<ViewGroup>(android.R.id.content) ?: return
+        val overlayView = rootLayout.findViewById<View>(R.id.biometric_overlay_root) ?: return
+        rootLayout.removeView(overlayView)
+    }
+
     @JvmStatic
     @JvmOverloads
     fun promptBiometric(
@@ -78,12 +96,15 @@ object BiometricLockManager {
         }
 
         isPromptShowing = true
+        showOverlay(activity)
+
         val executor = ContextCompat.getMainExecutor(activity)
         val callback = object : BiometricPrompt.AuthenticationCallback() {
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                 super.onAuthenticationSucceeded(result)
                 isPromptShowing = false
                 isAppLocked = false
+                hideOverlay(activity)
                 onSuccess.run()
             }
 
@@ -114,6 +135,7 @@ object BiometricLockManager {
             biometricPrompt.authenticate(builder.build())
         } catch (e: Exception) {
             isPromptShowing = false
+            hideOverlay(activity)
             onError?.accept(e.localizedMessage ?: "Biometric error")
         }
     }
@@ -122,4 +144,5 @@ object BiometricLockManager {
         fun accept(value: T)
     }
 }
+
 
