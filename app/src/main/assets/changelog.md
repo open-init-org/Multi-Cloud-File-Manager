@@ -1,4 +1,5 @@
 ### 3.0.9
+* **Security & UI:** Added a opaque privacy overlay layer (`overlay_biometric_lock.xml`) that obscures sensitive application content while the biometric authentication prompt is visible.
 * **UI:** Moved the three-dot options menu on Gallery View thumbnails from the top-right corner to the bottom info bar, alongside the filename and file details — improving visibility and usability.
 * **Feature:** Added "Folder Size" section to the folder properties dialog — tap Calculate to recursively count files and compute total occupied space via `rclone size`.
 * **UI:** Moved "About" from General Settings to the Navigation Drawer (hamburger menu) for faster access.
