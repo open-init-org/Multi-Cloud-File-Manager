@@ -30,7 +30,7 @@ This repository contains **Multi Cloud File Manager** (formerly known as *Round 
 ## 3. Build Requirements & Commands
 
 ### Prerequisites
-- **JDK:** Java 17
+- **JDK:** Java 21
 - **Go:** Read dynamically from `gradle.properties` (`org.openinit.multicloudfilemanager.goVersion`)
 - **Android NDK:** Read dynamically from `gradle.properties` (`org.openinit.multicloudfilemanager.ndkVersion`)
 
@@ -55,7 +55,7 @@ External applications or task managers (e.g., Tasker, Automate) can trigger sync
 | Component | Target Value |
 |---|---|
 | **Package Name** | `org.openinit.multicloudfilemanager` |
-| **Class Name** | `ca.pkay.rcloneexplorer.Services.SyncService` |
+| **Class Name** | `org.openinit.multicloudfilemanager.Services.SyncService` |
 | **Action** | `START_TASK` |
 | **Extra (Int)** | `task` (ID of the saved task) |
 | **Extra (Boolean)** | `notification` (`true` or `false`) |
@@ -66,3 +66,26 @@ External applications or task managers (e.g., Tasker, Automate) can trigger sync
 
 - Releases are triggered on pushing tags (e.g., `git push origin v3.0.2`).
 - The `android.yml` workflow reads `goVersion` and `ndkVersion` from `gradle.properties`, exports `GO_VERSION` to `$GITHUB_ENV`, builds the application, and publishes release assets using `softprops/action-gh-release@v2`.
+
+---
+
+## 6. Maintenance & Guidelines
+
+- **Relative Paths Policy**: MUST ALWAYS use relative paths (e.g., `docs/safdav-architecture.md`, `app/src/...`) in documentation, responses, and code comments. NEVER hardcode machine-specific absolute file system paths (such as `/home/username/...` or `file:///home/...`).
+- **Changelog Updates**: The in-app changelog asset [`app/src/main/assets/changelog.md`](../app/src/main/assets/changelog.md) MUST ALWAYS be updated whenever a new feature, bug fix, refactoring, or version release is made. Keep entries clean starting from version `3.0.0` onwards.
+- **Architecture Documentation**:
+  - `safdav` (Storage Access Framework WebDAV adapter): [`docs/safdav-architecture.md`](../docs/safdav-architecture.md)
+  - `librclone.so` (Native Go core compilation & Android W^X execution mechanics): [`docs/rclone-core-integration.md`](../docs/rclone-core-integration.md)
+  - UI navigation, fragments, menus, toolbar, and screen structure: [`.agents/UI_STRUCTURE.md`](UI_STRUCTURE.md)
+
+
+## 7. Memory & Context for AI Agents
+
+See [`MEMORY.md`](MEMORY.md) for persistent memory, architectural context, conventions, and notes for AI coding assistants operating on this codebase. Always update this file with new context, conventions, or architectural notes to ensure AI agents have the latest information.
+
+**Before any UI / navigation / menu / fragment / screen work:**
+- MUST read [`.agents/UI_STRUCTURE.md`](UI_STRUCTURE.md) to understand the current structure of screens, fragments, menus, toolbar conventions, and navigation patterns.
+
+**After any UI / navigation / menu / fragment / screen work:**
+- MUST update [`.agents/UI_STRUCTURE.md`](UI_STRUCTURE.md) to reflect the new state: new screens, removed items, changed navigation paths, new toolbar buttons, etc.
+- Keep the "Histórico de Mudanças Estruturais" table at the bottom of `UI_STRUCTURE.md` always up to date.
