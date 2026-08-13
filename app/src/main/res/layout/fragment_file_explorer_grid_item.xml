@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackground">
+
+        <!-- Square Thumbnail Container -->
+        <FrameLayout
+            android:id="@+id/icons"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="?attr/colorSurfaceVariant">
+
+            <ImageView
+                android:id="@+id/file_icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/file_icon" />
+
+            <ImageView
+                android:id="@+id/dir_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_folder"
+                app:tint="?attr/colorPrimary"
+                android:visibility="gone"
+                android:contentDescription="@string/file_icon" />
+
+            <ProgressBar
+                android:id="@+id/thumbnail_loading_progress"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:visibility="gone" />
+
+            <!-- Bottom Gradient Overlay for File Details -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="#CC000000"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="8dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="4dp">
+
+                <!-- Left column: filename + date/size -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/file_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        tools:text="Photo_001.jpg" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/file_modtime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#DDFFFFFF"
+                            android:textSize="10sp"
+                            tools:text="2026-08-12" />
+
+                        <TextView
+                            android:id="@+id/interpunct"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="4dp"
+                            android:paddingEnd="4dp"
+                            android:text="@string/interpunct"
+                            android:textColor="#DDFFFFFF"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/file_size"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#DDFFFFFF"
+                            android:textSize="10sp"
+                            tools:text="2.4 MB" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Three-dot menu button aligned to the right in the bottom bar -->
+                <ImageButton
+                    android:id="@+id/file_options"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/file_options_content_description"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_more_vert"
+                    app:tint="#FFFFFF" />
+
+            </LinearLayout>
+        </FrameLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

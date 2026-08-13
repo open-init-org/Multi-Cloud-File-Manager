@@ -51,6 +51,56 @@
         android:textIsSelectable="true"
         tools:text="12 MB"/>
 
+    <!-- Folder size section (visible only for directories) -->
+    <LinearLayout
+        android:id="@+id/folder_size_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/colorAccent"
+            android:paddingTop="16dp"
+            android:textStyle="bold"
+            android:text="@string/folder_size_label"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/folder_size_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tap_to_calculate"
+                android:textIsSelectable="true"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/folder_size_calculate_button"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/calculate"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/folder_size_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:visibility="gone"
+            tools:text="42 files"/>
+
+    </LinearLayout>
 
     <View
         android:id="@+id/hash_separator"

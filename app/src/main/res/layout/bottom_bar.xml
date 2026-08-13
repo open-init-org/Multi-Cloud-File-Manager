@@ -45,7 +45,8 @@
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/download"
                     android:paddingTop="6dp"
-                    android:src="@drawable/ic_file_download" />
+                    android:src="@drawable/ic_file_download"
+                    app:tint="?attr/colorOnPrimaryContainer" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -77,7 +78,8 @@
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/move"
                     android:paddingTop="6dp"
-                    android:src="@drawable/ic_folder_move" />
+                    android:src="@drawable/ic_folder_move"
+                    app:tint="?attr/colorOnPrimaryContainer" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -109,7 +111,8 @@
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/rename"
                     android:paddingTop="6dp"
-                    android:src="@drawable/ic_edit" />
+                    android:src="@drawable/ic_edit"
+                    app:tint="?attr/colorOnPrimaryContainer" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -141,7 +144,8 @@
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/delete"
                     android:paddingTop="6dp"
-                    android:src="@drawable/ic_delete" />
+                    android:src="@drawable/ic_delete"
+                    app:tint="?attr/colorOnPrimaryContainer" />
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -29,20 +29,20 @@
     <!-- Card Styles need to be applied to the card directly.-->
     <style name="MainViewToolbar">
         <item name="cardBackgroundColor">?attr/colorPrimary</item>
-        <item name="android:textColor">?attr/colorOnSecondary</item>
-        <item name="android:tint">?attr/colorOnSecondary</item>
-        <item name="tint">?attr/colorOnSecondary</item>
-        <item name="iconTint">?attr/colorOnSecondary</item>
-        <item name="actionMenuTextColor">?attr/colorOnSecondary</item>
-        <item name="android:actionMenuTextColor">?attr/colorOnSecondary</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:tint">?attr/colorOnPrimary</item>
+        <item name="tint">?attr/colorOnPrimary</item>
+        <item name="iconTint">?attr/colorOnPrimary</item>
+        <item name="actionMenuTextColor">?attr/colorOnPrimary</item>
+        <item name="android:actionMenuTextColor">?attr/colorOnPrimary</item>
         <item name="popupTheme">@style/MainViewToolbarOverflowMenu</item>
-        <item name="android:textColorPrimary">?attr/colorOnSecondary</item>
+        <item name="android:textColorPrimary">?attr/colorOnPrimary</item>
     </style>
 
-    <style name="MainViewToolbarOverflowMenu" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="android:colorBackground">?attr/colorSecondary</item>
-        <item name="android:textColor">?attr/colorSecondary</item>
-        <item name="android:textColorPrimary">?attr/colorSecondary</item>
+    <style name="MainViewToolbarOverflowMenu" parent="ThemeOverlay.AppCompat.DayNight">
+        <item name="android:colorBackground">?attr/colorSurface</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textColorPrimary">?attr/colorOnSurface</item>
     </style>
 
     <style name="FloatingActionButtonMulti">
@@ -60,10 +60,10 @@
     </style>
 
     <style name="FileListBottomBars">
-        <item name="android:textColor">?attr/colorOnTertiary</item>
-        <item name="android:tint">?attr/colorOnTertiary</item>
-        <item name="android:background">?attr/colorTertiary</item>
-        <item name="cardBackgroundColor">?attr/colorTertiary</item>
+        <item name="android:textColor">?attr/colorOnPrimaryContainer</item>
+        <item name="android:tint">?attr/colorOnPrimaryContainer</item>
+        <item name="android:background">?attr/colorPrimaryContainer</item>
+        <item name="cardBackgroundColor">?attr/colorPrimaryContainer</item>
     </style>
 
     <style name="SettingsTheme">
@@ -92,7 +92,6 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/dialogCornerRadius</item>
     </style>
-    <style name="BreadcrumbText" parent="">
-        <item name="android:textColor">@color/md_theme_light_background</item>
+    <style name="BreadcrumbText" parent="Widget.MaterialComponents.TextView">
     </style>
 </resources>

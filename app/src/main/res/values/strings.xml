@@ -29,7 +29,7 @@
     <string name="author_name" translatable="false">Patryk Kaczmarkiewicz &lt;github.com/patrykcoding&gt;</string>
     <string name="follow_on_github">Follow on GitHub</string>
     <string name="maintainer">Maintainer</string>
-    <string name="maintainer_name" translatable="false">Felix Nüsse</string>
+    <string name="maintainer_name" translatable="false">open-init-org</string>
     <string name="old_maintainer">Old Maintainer</string>
     <string name="old_maintainer_name" translatable="false">x0b &lt;github.com/x0b&gt;</string>
     <string name="empty_folder">The folder is empty</string>
@@ -44,10 +44,11 @@
     <string name="cancel">Cancel</string>
     <string name="select">Select</string>
     <string name="app_icon">App Icon</string>
-    <string name="github_app_url" translatable="false"></string>
-    <string name="github_issue_url" translatable="false"></string>
+    <string name="github_app_url" translatable="false">https://github.com/open-init-org/Multi-Cloud-File-Manager</string>
+    <string name="github_issue_url" translatable="false">https://github.com/open-init-org/Multi-Cloud-File-Manager/issues</string>
     <string name="github_author_url" translatable="false">https://github.com/patrykcoding</string>
-    <string name="github_maintainer_url" translatable="false"></string>
+    <string name="github_maintainer_url" translatable="false">https://github.com/open-init-org</string>
+    <string name="author_and_old_maintainers">Author &amp; Previous Maintainers</string>
     <string name="replace_config_file_question">Replace the current configuration file?</string>
     <string name="config_file_lost_statement">Your current configuration will be lost</string>
     <string name="continue_statement">Continue</string>
@@ -93,6 +94,10 @@
     <string name="hash_error">ERROR</string>
     <string name="hash_unsupported">UNSUPPORTED</string>
     <string name="hash_copied_confirmation">Hash copied to clipboard</string>
+    <string name="folder_size_label">Folder Size</string>
+    <string name="folder_size_count_format">%1$d files</string>
+    <string name="folder_size_error">Could not calculate size</string>
+    <string name="calculate">Calculate</string>
     <string name="copying_rclone_config">Copying rclone configuration</string>
     <string name="copying_rclone_config_fail">Failed to copy rclone configuration</string>
     <string name="import_configuration_fail_rclone">Failed to import. Your rclone.conf is not valid!</string>
@@ -215,6 +220,12 @@
     <string name="shared_preferences_drawer_pinned_remotes" translatable="false">shared_preferences_drawer_pinned_remotes</string>
     <string name="shared_preferences_allow_sync_trigger_while_idle" translatable="false">shared_preferences_allow_sync_trigger_while_idle</string>
     <string name="show_thumbnails">Show thumbnails</string>
+    <string name="view_mode">View mode</string>
+    <string name="view_mode_list">List view</string>
+    <string name="view_mode_gallery">Gallery view</string>
+    <string name="photo_details">Photo details</string>
+    <string name="photo_counter">%1$d of %2$d</string>
+    <string name="error_loading_photo">Error loading photo</string>
     <string name="pref_thumbnails_size_title">Maximum file size for thumbnails</string>
     <string name="pref_thumbnails_dlg_title">Size limit (MB)</string>
     <string name="pref_thumbnails_size_summary">%1$.1f MB</string>
@@ -249,6 +260,8 @@
     <string name="select_sync_direction">Select sync direction</string>
     <string name="nav_drawer_pinned_header">Pinned</string>
     <string name="nav_header_options_header">Options</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="worker_download_cancelled">Download cancelled</string>
     <string name="wifi_connections_isnt_available">Wi-Fi connection isn\'t available</string>
     <string name="worker_upload_cancelled">Upload cancelled</string>
@@ -342,6 +355,10 @@
         <item quantity="other">Successfully synced %2$s in %3$d files.</item>
     </plurals>
     <string name="operation_success_description_deletions_prefix">Also deleted %d files and folders.</string>
+    <string name="operation_sync_failed_start">Could not start rclone process.</string>
+    <string name="operation_sync_failed_waiting">Sync failed while waiting for rclone to finish.</string>
+    <string name="operation_sync_failed_exit">Sync failed (rclone exit code %d).</string>
+    <string name="operation_sync_completed">Sync completed.</string>
     <string name="operation_report_success_title">Sync-Report Successes</string>
     <string name="operation_report_success_short_content">%d Tasks succeeded</string>
     <string name="operation_report_fail_title">Sync-Report Failures</string>
@@ -392,6 +409,7 @@
     <string name="sync_notification_file_checking">Checking: %14s</string>
     <string name="sync_notification_elapsed">Elapsed: %14s</string>
     <string name="sync_notification_short">%1$s of %2$s, %3$s remaining</string>
+    <string name="sync_service_notification_running">Sync in progress...</string>
     <plurals name="modern_prettyprint_duration_d">
         <item quantity="one">%s Day</item>
         <item quantity="other">%s Days</item>
@@ -475,6 +493,13 @@
     <string name="theme_title">Theme</string>
     <string name="remote_folder_picker_title">Folder picker</string>
     <string name="logFragment">Logs</string>
+    <string name="log_clear_title">Clear Logs</string>
+    <string name="log_clear_message">Delete all log entries?</string>
+    <string name="log_clear_confirm">Delete</string>
+    <string name="log_filter">Filter</string>
+    <string name="log_filter_all">All</string>
+    <string name="log_filter_errors">Errors only</string>
+    <string name="log_filter_info">Info only</string>
     <string name="alarm_while_idle">Allow tasks to run when the device is idle</string>
     <string name="alarm_while_idle_summary">May consume more battery, but disabled can cause heavy delays.</string>
     <string name="task_data_validation_error_no_local_path">You have not selected a local path yet</string>
@@ -626,6 +651,8 @@
     <!-- Biometric Lock Preferences & Prompts -->
     <string name="pref_key_biometric_lock">pref_key_biometric_lock</string>
     <string name="preference_category_security">Security</string>
+    <string name="security_settings_description">Manage app security and biometric authentication</string>
+    <string name="security_settings_icon_content_description">Security settings icon</string>
     <string name="pref_biometric_lock_title">Biometric Lock</string>
     <string name="pref_biometric_lock_summary">Require biometric or device credential when opening the app</string>
     <string name="biometric_prompt_title">Authentication Required</string>

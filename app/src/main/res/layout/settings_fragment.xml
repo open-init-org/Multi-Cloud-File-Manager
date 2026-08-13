@@ -71,6 +71,63 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/security_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/security_settings_icon_background"
+                android:layout_width="@dimen/settingsIconSize"
+                android:layout_height="@dimen/settingsIconSize"
+                android:layout_margin="@dimen/settingsIconMargin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/shape_circle"
+                app:tint="#8E24AA" />
+
+            <ImageView
+                android:id="@+id/security_settings_icon"
+                android:layout_width="@dimen/settings_icon_image_size"
+                android:layout_height="@dimen/settings_icon_image_size"
+                android:contentDescription="@string/security_settings_icon_content_description"
+                android:src="@drawable/ic_lock"
+                app:layout_constraintBottom_toBottomOf="@+id/security_settings_icon_background"
+                app:layout_constraintEnd_toEndOf="@+id/security_settings_icon_background"
+                app:layout_constraintStart_toStartOf="@+id/security_settings_icon_background"
+                app:layout_constraintTop_toTopOf="@+id/security_settings_icon_background"
+                app:tint="@color/iconTint" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/settingsIconMargin"
+                android:layout_marginEnd="@dimen/settingsIconMargin"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/security_settings_icon_background"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/securityTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/preference_category_security"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/securitySubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/security_settings_description" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/file_access_settings"

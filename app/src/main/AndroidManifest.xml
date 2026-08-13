@@ -56,6 +56,11 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".Activities.PhotoViewerActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".Activities.ShortcutServiceActivity"
             android:exported="true"
             android:launchMode="singleTask"
