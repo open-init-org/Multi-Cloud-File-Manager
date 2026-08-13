@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlinVersion = '1.9.22'
+    ext.kotlinVersion = '2.0.21'
     repositories {
         google()
         mavenCentral()
@@ -18,7 +18,30 @@ buildscript {
 }
 
 ext {
-    targetCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_21
+    getGitVersionName = { ->
+        try {
+            def stdout = new ByteArrayOutputStream()
+            exec {
+                commandLine 'git', 'describe', '--tags', '--always'
+                standardOutput = stdout
+                ignoreExitValue = true
+            }
+            def gitTag = stdout.toString().trim()
+            if (gitTag && !gitTag.isEmpty()) {
+                return gitTag.startsWith('v') ? gitTag.substring(1) : gitTag
+            }
+
+            def gitHubRefName = System.getenv("GITHUB_REF_NAME")
+            if (gitHubRefName && gitHubRefName.trim()) {
+                def cleanRef = gitHubRefName.trim()
+                return cleanRef.startsWith('v') ? cleanRef.substring(1) : cleanRef
+            }
+        } catch (Exception ignored) {
+            // Fallback if git execution fails
+        }
+        return "3.0.0-SNAPSHOT"
+    }
 }
 
 allprojects {

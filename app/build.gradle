@@ -19,8 +19,8 @@ android {
         minSdkVersion 23
         compileSdk 34
         targetSdkVersion 34
-        versionCode 410 // last digit is reserved for ABI, only ever end on 0!
-        versionName '3.0.4'
+        versionCode 450 // last digit is reserved for ABI, only ever end on 0!
+        versionName rootProject.ext.getGitVersionName()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "java.lang.String", "CLI", System.getenv('RCX_BUILD_CLI') ? System.getenv('RCX_BUILD_CLI') : "\"c03129b6-b09f-9cb4-8fcd-7f143b8f94ef\""
         buildConfigField "java.lang.String", "VCP_AUTHORITY", "\"" + applicationId + ".vcp\"";
@@ -103,11 +103,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17
+        jvmTarget = JavaVersion.VERSION_21
     }
     packagingOptions {
         jniLibs {
@@ -142,7 +142,7 @@ android {
         preBuild.dependsOn(':rclone:buildAll')
     }
 
-    namespace 'ca.pkay.rcloneexplorer'
+    namespace 'org.openinit.multicloudfilemanager'
 
     // https://android.izzysoft.de/articles/named/iod-scan-apkchecks#blobs
     dependenciesInfo {
@@ -178,11 +178,12 @@ dependencies {
 
     implementation 'androidx.biometric:biometric:1.1.0'
 
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
 
 
-    // Thumbnails
+    // Thumbnails & Image Viewer
     implementation 'com.github.bumptech.glide:glide:4.16.0'
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
     implementation 'androidx.work:work-runtime-ktx:2.9.0'
     implementation 'androidx.preference:preference:1.2.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
