@@ -51,6 +51,7 @@ import org.openinit.multicloudfilemanager.Items.FilterEntry;
 import org.openinit.multicloudfilemanager.Items.RemoteItem;
 import org.openinit.multicloudfilemanager.Items.SyncDirectionObject;
 import org.openinit.multicloudfilemanager.rclone.Provider;
+import org.openinit.multicloudfilemanager.util.ConfigPasswordManager;
 import org.openinit.multicloudfilemanager.util.FLog;
 import org.openinit.multicloudfilemanager.util.SyncLog;
 import es.dmoral.toasty.Toasty;
@@ -184,6 +185,10 @@ public class Rclone {
         // ignore chtimes errors
         // ref: https://github.com/rclone/rclone/issues/2446
         environmentValues.add("RCLONE_LOCAL_NO_SET_MODTIME=true");
+
+        // Pass native rclone.conf encryption key from Android Keystore
+        String configPass = ConfigPasswordManager.getConfigPassword(context);
+        environmentValues.add("RCLONE_CONFIG_PASS=" + configPass);
 
         // Allow the caller to overwrite any option for special cases
         Iterator<String> envVarIter = environmentValues.iterator();

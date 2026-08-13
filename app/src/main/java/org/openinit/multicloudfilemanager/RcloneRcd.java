@@ -10,6 +10,7 @@ import android.util.SparseArray;
 
 import androidx.annotation.IntDef;
 import androidx.preference.PreferenceManager;
+import org.openinit.multicloudfilemanager.util.ConfigPasswordManager;
 import org.openinit.multicloudfilemanager.util.FLog;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -173,6 +174,10 @@ public class RcloneRcd {
         // ignore chtimes errors
         // ref: https://github.com/rclone/rclone/issues/2446
         environmentValues.add("RCLONE_LOCAL_NO_SET_MODTIME=true");
+
+        // Pass native rclone.conf encryption key from Android Keystore
+        String configPass = ConfigPasswordManager.getConfigPassword(context);
+        environmentValues.add("RCLONE_CONFIG_PASS=" + configPass);
         return environmentValues.toArray(new String[0]);
     }
 
