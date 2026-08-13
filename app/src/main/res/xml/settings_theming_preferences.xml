@@ -1,16 +1,38 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ListPreference
-        android:defaultValue="0"
-        app:useSimpleSummaryProvider="true"
-        android:entries="@array/theme_userfacing"
-        android:entryValues="@array/theme_ids"
-        android:key="@string/pref_key_theme"
-        android:title="@string/theme_title" />
 
-    <SwitchPreference
-        android:defaultValue="true"
-        android:key="@string/pref_key_wrap_filenames"
-        android:title="@string/wrap_filenames"
-        app:summary="@string/wrap_filenames_summary" />
+    <PreferenceCategory app:title="@string/look_and_feel">
+        <ListPreference
+            android:defaultValue="0"
+            app:useSimpleSummaryProvider="true"
+            android:entries="@array/theme_userfacing"
+            android:entryValues="@array/theme_ids"
+            android:key="@string/pref_key_theme"
+            android:title="@string/theme_title" />
+
+        <Preference
+            android:key="languagePickerTempKey"
+            android:title="@string/pref_locale"
+            app:summary="%s" />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="@string/pref_key_wrap_filenames"
+            android:title="@string/wrap_filenames"
+            app:summary="@string/wrap_filenames_summary" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/preference_category_header_thumbnails">
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="@string/pref_key_show_thumbnails"
+            app:title="@string/show_thumbnails" />
+
+        <org.openinit.multicloudfilemanager.extract.settings.preferences.FilesizePreference
+            android:defaultValue="1048576"
+            android:key="@string/pref_key_thumbnail_size_limit"
+            android:title="@string/pref_thumbnails_dlg_title"
+            app:dependency="@string/pref_key_show_thumbnails" />
+    </PreferenceCategory>
+
 </PreferenceScreen>

@@ -31,32 +31,7 @@ class GeneralPreferencesFragment : PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.settings_general_preferences, rootKey)
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        requireActivity().title = getString(R.string.pref_header_general)
-
-
-        val thumbnailKey = getString(R.string.pref_key_thumbnail_size_limit)
-        val thumbnailSizePreference = findPreference(thumbnailKey) as FilesizePreference?
-        thumbnailSizePreference?.summaryProvider =
-            Preference.SummaryProvider<FilesizePreference> { preference ->
-                val size = preference.getValue()
-                val sizeMb = (size / 1024 / 1024)
-                Log.e(TAG(), "test: $sizeMb")
-                resources.getString(R.string.pref_thumbnails_size_summary, sizeMb.toFloat())
-            }
-
-        val shortcutsPreference = findPreference("AppShortcutTempKey") as Preference?
-        shortcutsPreference?.setOnPreferenceClickListener {
-            showAppShortcutDialog()
-            true
-        }
-
-        val languagePreference = findPreference("languagePickerTempKey") as Preference?
-        languagePreference?.setSummary(LanguagePicker(requireContext()).getCurrentLocale()?.displayLanguage)
-        languagePreference?.setOnPreferenceClickListener {
-            LanguagePicker(requireContext()).showPicker()
-            true
-        }
-
+        requireActivity().title = getString(R.string.network_settings_header)
     }
 
     private fun showThumbnailSizeDialog(preference: Preference) {

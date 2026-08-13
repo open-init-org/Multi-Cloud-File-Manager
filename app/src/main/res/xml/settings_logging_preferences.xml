@@ -1,7 +1,14 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <PreferenceCategory android:title="@string/preference_category_header_logging">
 
+    <PreferenceCategory android:title="@string/app_shortcuts_settings">
+        <Preference
+            android:key="AppShortcutTempKey"
+            android:title="@string/app_shortcuts_settings"
+            app:summary="Select shortcuts that you can pin on your homescreen" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/preference_category_header_logging">
         <SwitchPreference
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -12,10 +19,10 @@
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/preference_category_header_rclone">
-
         <org.openinit.multicloudfilemanager.extract.settings.preferences.ButtonPreference
             android:title="@string/pref_send_sigquit_title"
             app:summary="@string/pref_send_sigquit_summary"
             android:key="TempKeySigquit" />
     </PreferenceCategory>
+
 </PreferenceScreen>

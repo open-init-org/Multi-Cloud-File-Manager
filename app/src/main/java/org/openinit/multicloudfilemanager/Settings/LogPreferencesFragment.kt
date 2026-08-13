@@ -24,14 +24,52 @@ class LogPreferencesFragment : PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.settings_logging_preferences, rootKey)
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        requireActivity().title = getString(R.string.logging_settings_header)
+        requireActivity().title = getString(R.string.advanced_settings_header)
+
+        val shortcutsPreference = findPreference<Preference>("AppShortcutTempKey")
+        shortcutsPreference?.setOnPreferenceClickListener {
+            showAppShortcutDialog()
+            true
+        }
 
         val sigkill = findPreference<Preference>("TempKeySigquit") as ButtonPreference
         sigkill.setButtonText(getString(R.string.pref_send_sigquit_button))
         sigkill.setButtonOnClick {
             sigquitAll()
         }
+    }
 
+    private fun showAppShortcutDialog() {
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.N_MR1) {
+            return
+        }
+        val remotes = org.openinit.multicloudfilemanager.Rclone(requireContext()).getRemotes()
+        val names = remotes.map { it.name }.toTypedArray()
+        val checkedItems = BooleanArray(names.size)
+        val selectedRemotes = ArrayList<String>()
+
+        androidx.appcompat.app.AlertDialog.Builder(requireContext())
+            .setTitle(R.string.app_shortcuts_settings_dialog_title)
+            .setMultiChoiceItems(names, checkedItems) { _, which, isChecked ->
+                if (isChecked) {
+                    selectedRemotes.add(names[which])
+                } else {
+                    selectedRemotes.remove(names[which])
+                }
+            }
+            .setPositiveButton(R.string.ok) { _, _ ->
+                val list = ArrayList<org.openinit.multicloudfilemanager.Items.RemoteItem>()
+                for (name in selectedRemotes) {
+                    for (remote in remotes) {
+                        if (remote.name == name) {
+                            list.add(remote)
+                        }
+                    }
+                }
+                org.openinit.multicloudfilemanager.AppShortcutsHelper.populateAppShortcuts(requireContext(), list)
+            }
+            .setNegativeButton(R.string.cancel, null)
+            .show()
     }
 
 
